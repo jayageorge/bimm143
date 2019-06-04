@@ -1,0 +1,87 @@
+---
+title: "Class 12: Structural Bioinformatics (Pt 2)"
+author: "Jaya George"
+date: "5/9/2019"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#Setup for Docking
+We will first prepare our HIV-Pr system for drug docking by making a protein only PDB format file (ie. )
+
+ Obtaining and inspecting our input structure.
+```{r}
+library(bio3d)
+file <- get.pdb("1hsg")
+```
+
+```{r}
+pdb <- read.pdb(file)
+pdb
+```
+
+Prepare initial protein and ligand input files
+```{r}
+prot <- atom.select(pdb, "protein", value = TRUE)
+write.pdb(prot, file= "1hsg_protein.pdb")
+prot
+```
+
+```{r}
+lig <- atom.select(pdb, "ligand", value = TRUE)
+write.pdb(lig, file= "1hsg_ligand.pdb")
+lig
+```
+
+We will load these into ADT to add hydrogens and make PDBQT files for each
+
+No we run autodoc vina with the cmd
+
+Inspecting your docking results 
+```{r}
+library(bio3d)
+res <- read.pdb("all.pdbqt", multi=TRUE)
+write.pdb(res, "results.pdb")
+```
+
+To assess the results quantitatively we will calculate the RMSD (root mean square distance) between each of the docking results and the known crystal structure using the bio3d package.
+```{r}
+res <- read.pdb("all.pdbqt", multi=TRUE)
+ori <- read.pdb("ligand.pdbqt")
+rmsd(ori, res)
+```
+
+
+##Exploring the conformational dynamics of proteins
+
+ Normal Mode Analysis (NMA) for flexibility prediction
+ 
+ Example structure of hen egg white lysozyme (PDB id 1hel)
+```{r}
+library(bio3d)
+pdb <- read.pdb("1HEL")
+modes <- nma(pdb)
+plot(modes, sse=pdb)
+```
+ 
+Visualize NMA results
+```{r}
+m7 <- mktrj(modes, mode=7, file="nma_7.pdb")
+m7
+```
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,243 @@
+---
+title: "Class 11: Structural Bioinformatics"
+author: "Jaya George"
+date: "5/7/2019"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## The PDB Database
+
+The [PDB](http://www.rcsb.org/) is the main repository for biomolecular structure data. 
+
+Here we examine the contents of the PDB:
+```{r}
+db <- read.csv("Data Export Summary.csv", row.names = 1)
+head(db)
+```
+
+How many are X-ray, etc.
+```{r}
+(db$Total/ sum(db$Total)) * 100 
+```
+
+How many are Protein
+```{r}
+(sum(db$Proteins)/sum(db$Total))*100
+```
+
+We see that it is predominantly X-ray crystallography and protein. 
+
+Download through datapast (add-in past as data.frame)
+```{r}
+library(datapasta)
+
+tmp <- data.frame(stringsAsFactors=FALSE,
+   Experimental.Method = c("X-Ray", "NMR", "Electron Microscopy", "Other",
+                           "Multi Method", "Total"),
+              Proteins = c(126880, 11062, 2277, 256, 129, 140604),
+         Nucleic.Acids = c(2012, 1279, 31, 4, 5, 3331),
+    ProteinComplex = c(6547, 259, 800, 6, 2, 7614),
+                 Other = c(8, 8, 0, 13, 1, 30),
+                 Total = c(135447, 12608, 3108, 279, 137, 151579)
+)
+```
+
+Type HIV in the PDB website search box on the home page and determine how many
+HIV-1 protease structures are in the current PDB?
+There are 1157 as of 2019-05-07. See: http://www.rcsb.org/pdb/results/results.do?tabtoshow=Current&qrid=F0CA5320
+
+##Section 3 Using bio3d
+
+```{r}
+library(bio3d)
+
+pdb <- read.pdb("1hsg.pdb")
+pdb
+```
+
+```{r}
+attributes(pdb)
+```
+
+```{r}
+head(pdb$atom)
+```
+
+Print a subset of $atom data for the first two atoms
+```{r}
+pdb$atom[1:2, c("eleno", "elety", "x","y","z")]
+```
+
+Note that individual $atom records can also be accessed like this
+```{r}
+pdb$atom$elety[1:2]
+```
+
+Which allows us to do the following
+```{r}
+plot.bio3d(pdb$atom$b[pdb$calpha], sse=pdb, typ="l", ylab= "B-factor")
+```
+
+Print a summary of the coordinate data in $xyz
+```{r}
+pdb$xyz
+```
+
+Examine the row and column dimensions
+```{r}
+dim(pdb$xyz)
+```
+
+Print coordinates for the first two atom
+```{r}
+pdb$xyz[ 1, atom2xyz(1:2) ]
+```
+
+Atom selection is done via the function **atom.select()**
+
+
+Select all C-alpha atoms (return their indices)
+```{r}
+ca.inds <- atom.select(pdb, "calpha")
+ca.inds
+```
+
+Print details of the first few selected atoms
+```{r}
+head( pdb$atom[ca.inds$atom, ] )
+```
+
+And selected xyz coordinates
+```{r}
+head( pdb$xyz[, ca.inds$xyz] )
+```
+
+Select chain A
+```{r}
+a.inds <- atom.select(pdb, chain="A")
+```
+
+Select C-alphas of chain A
+```{r}
+ca.inds <- atom.select(pdb, "calpha", chain="A")
+```
+
+We can combine multiple selection criteria to return their
+intersection
+```{r}
+cab.inds <- atom.select(pdb, elety=c("CA","CB"), chain="A",
+resno=10:20)
+```
+
+Write.pdb function
+```{r}
+prot.pdb <- atom.select(pdb, "protein", value= TRUE)
+write.pdb(prot.pdb, file="1hsg_protein.pdb")
+```
+
+```{r}
+ligand.pdb <- atom.select(pdb, "ligand", value= TRUE)
+write.pdb(ligand.pdb, file="1hsg_ligand.pdb")
+```
+
+##Section 5
+
+```{r}
+aa <- get.seq("1ake_A")
+```
+
+Blast or hmmer search 
+```{r}
+b <- blast.pdb(aa)
+```
+
+Plot a summary of search results
+```{r}
+hits <- plot(b)
+```
+Blast results. Visualize and filter blast results through function plot.blast(). Here we proceed with only the top scoring hits (black).
+
+```{r}
+head(hits$pdb.id)
+```
+
+Fetch PDBs
+```{r}
+files <- get.pdb(hits$pdb.id, path="pdbs", split=TRUE, gzip=TRUE)
+```
+
+Align structures
+```{r}
+pdbs <- pdbaln(files)
+```
+
+Vector containing PDB codes
+```{r}
+ids <- basename.pdb(pdbs$id)
+```
+
+Draw schematic alignment
+```{r}
+plot(pdbs, labels=ids)
+```
+Plot is the schematic representation of alignment. Grey regions depict aligned residues, while white depict gap regions. The red bar at the top depict sequence conservation.
+
+##Sequence Conservation Analysis
+
+Calculate sequence conservation
+```{r}
+cons <- conserv(pdbs, method="entropy22")
+```
+
+SSE annotations
+```{r}
+sse <- pdbs2sse(pdbs, ind=1, rm.gaps=FALSE)
+```
+
+Plot conservation per residue
+```{r}
+plotb3(cons, sse=sse, ylab="Sequence entropy")
+```
+Sequence conservation per residue. Here, Shannon's information entropy is used tomeasure the diversity per alignment column. SSEs are depicted with dark (helices) and light (sheets) grey boxes in marginal regions.
+
+##Annotate collected PDB structures
+
+Function pdb.annotate() provides a convenient way of annotating the PDB files we have collected. Below we use the function to annotate each structure to its source species. 
+```{r}
+anno <- pdb.annotate(ids)
+print(unique(anno$source))
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
