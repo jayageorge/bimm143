@@ -12,7 +12,7 @@ Using R and Other Tools for Bioinformatics Analysis
 
 Class 08: [An Introduction to Machine Learning (Hierarchical Clustering)] (https://github.com/jayageorge/bimm143/blob/master/class08/class08.Rmd)
 
-Class 09: [Anlayzing High Dimensional Datasets and Unsupervised Learning]
+Class 09: [Anlayzing High Dimensional Datasets and Unsupervised Learning] (https://github.com/jayageorge/bimm143/blob/master/class09/class09.md)
 
 Class 11: [Structural Bioinformatics: Analyzing Protein Structure and Function]
 
