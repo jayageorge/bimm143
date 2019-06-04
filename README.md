@@ -4,7 +4,7 @@ This is my classwork from [BIMM143 Spring 2019](https://bioboot.github.io/bimm14
 
 Class 05: [Basic Data Exploration and Visualization in R, HTML, MD, Rmd] (https://github.com/jayageorge/bimm143/blob/master/class05/class05.md)
 
-Class 06: [Creating R functions]
+Class 06: [Creating R functions] (https://github.com/jayageorge/bimm143/blob/master/class06/class06.md)
 
 Class 07: [R Packages, working with CRAN and Bioconductor]
 
