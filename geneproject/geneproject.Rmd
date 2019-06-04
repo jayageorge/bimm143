@@ -1,0 +1,43 @@
+---
+title: "Gene Project"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(bio3d)
+```
+
+```{r}
+seq <- read.fasta("alignment.fst")
+seq
+```
+
+```{r}
+seqid<- seqidentity(seq)
+seqid
+```
+
+
+```{r}
+heatmap(seqid, margins= c(8, 5))
+```
+
+```{r}
+seqcon <- consensus(seq)
+seqcon
+```
+
+```{r}
+prot <- read.pdb("1AQB")
+```
+
+```{r}
+write.pdb(prot)
+```
+
+
+
