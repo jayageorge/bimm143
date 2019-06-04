@@ -26,4 +26,4 @@ Class 15: [Genome Annotation and the Interpretation of Gene Lists](https://githu
 
 Class 17: [Biological Network Analysis](https://github.com/jayageorge/bimm143/blob/master/lecture17%20copy.md)
 
-Class 18: [Cancer Genomics]
+Class 18: [Cancer Genomics](https://github.com/jayageorge/bimm143/blob/master/lecture18%20copy.md)
