@@ -20,7 +20,7 @@ Class 12: [Drug Discovery: Techniques and Analysis](https://github.com/jayageorg
 
 Class 13: [Genome Informatics and High Throughput Sequencing (NGS, RNA-Seq, and FastQC)](https://github.com/jayageorge/bimm143/blob/master/class13%20copy.md)
 
-Class 14: [Transcriptomics and RNA-Seq Analysis]
+Class 14: [Transcriptomics and RNA-Seq Analysis](https://github.com/jayageorge/bimm143/blob/master/class14%20copy.md)
 
 Class 15: [Genome Annotation and the Interpretation of Gene Lists]
 
