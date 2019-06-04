@@ -24,6 +24,6 @@ Class 14: [Transcriptomics and RNA-Seq Analysis](https://github.com/jayageorge/b
 
 Class 15: [Genome Annotation and the Interpretation of Gene Lists](https://github.com/jayageorge/bimm143/blob/master/lecture15%20copy.md)
 
-Class 17: [Biological Network Analysis]
+Class 17: [Biological Network Analysis](https://github.com/jayageorge/bimm143/blob/master/lecture17%20copy.md)
 
 Class 18: [Cancer Genomics]
