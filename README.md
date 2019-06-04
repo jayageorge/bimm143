@@ -22,7 +22,7 @@ Class 13: [Genome Informatics and High Throughput Sequencing (NGS, RNA-Seq, and 
 
 Class 14: [Transcriptomics and RNA-Seq Analysis](https://github.com/jayageorge/bimm143/blob/master/class14%20copy.md)
 
-Class 15: [Genome Annotation and the Interpretation of Gene Lists]
+Class 15: [Genome Annotation and the Interpretation of Gene Lists](https://github.com/jayageorge/bimm143/blob/master/lecture15%20copy.md)
 
 Class 17: [Biological Network Analysis]
 
