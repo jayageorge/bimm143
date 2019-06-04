@@ -6,7 +6,7 @@ Class 05: [Basic Data Exploration and Visualization in R, HTML, MD, Rmd] (https:
 
 Class 06: [Creating R functions] (https://github.com/jayageorge/bimm143/blob/master/class06/class06.md)
 
-Class 07: [R Packages, working with CRAN and Bioconductor]
+Class 07: [R Packages, working with CRAN and Bioconductor] (https://github.com/jayageorge/bimm143/blob/master/class07/class07.md)
 
 Using R and Other Tools for Bioinformatics Analysis
 
