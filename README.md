@@ -2,7 +2,7 @@
 
 This is my classwork from [BIMM143 Spring 2019](https://bioboot.github.io/bimm143_S19/) at UCSD.
 
-Class 05: [Basic Data Exploration and Visualization in R, HTML, MD, Rmd]
+Class 05: [Basic Data Exploration and Visualization in R, HTML, MD, Rmd] (https://github.com/jayageorge/bimm143/blob/master/class05/class05.md)
 
 Class 06: [Creating R functions]
 
