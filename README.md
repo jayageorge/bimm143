@@ -16,7 +16,7 @@ Class 09: [Anlayzing High Dimensional Datasets and Unsupervised Learning](https:
 
 Class 11: [Structural Bioinformatics: Analyzing Protein Structure and Function](https://github.com/jayageorge/bimm143/blob/master/class11.md)
 
-Class 12: [Drug Discovery: Techniques and Analysis]
+Class 12: [Drug Discovery: Techniques and Analysis](https://github.com/jayageorge/bimm143/blob/master/class12/class12.md)
 
 Class 13: [Genome Informatics and High Throughput Sequencing (NGS, RNA-Seq, and FastQC)]
 
