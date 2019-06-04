@@ -18,7 +18,7 @@ Class 11: [Structural Bioinformatics: Analyzing Protein Structure and Function](
 
 Class 12: [Drug Discovery: Techniques and Analysis](https://github.com/jayageorge/bimm143/blob/master/class12/class12.md)
 
-Class 13: [Genome Informatics and High Throughput Sequencing (NGS, RNA-Seq, and FastQC)]
+Class 13: [Genome Informatics and High Throughput Sequencing (NGS, RNA-Seq, and FastQC)](https://github.com/jayageorge/bimm143/blob/master/class13%20copy.md)
 
 Class 14: [Transcriptomics and RNA-Seq Analysis]
 
